@@ -4,7 +4,7 @@ export const logIn = (formData, navigate) => async (dispatch) => {
   try {
     const { data } = await AuthApi.logIn(formData);
     dispatch({ type: "AUTH_SUCCESS", data: data });
-    navigate("../home", { replace: true });
+    navigate("../chat", { replace: true });
   } catch (error) {
     console.log(error);
     dispatch({ type: "AUTH_FAIL" });
@@ -16,7 +16,7 @@ export const signUp = (formData, navigate) => async (dispatch) => {
   try {
     const { data } = await AuthApi.signUp(formData);
     dispatch({ type: "AUTH_SUCCESS", data: data });
-    navigate("../home", { replace: true });
+    navigate("/login", { replace: true });
   } catch (error) {
     console.log(error);
     dispatch({ type: "AUTH_FAIL" });
@@ -24,6 +24,7 @@ export const signUp = (formData, navigate) => async (dispatch) => {
 };
 
 
-export const logout = ()=> async(dispatch)=> {
-  dispatch({type: "LOG_OUT"})
+export const logout = (navigate)=> async(dispatch)=> {
+  dispatch({type: "LOG_OUT"});
+  navigate("/auth", { replace: true });
 }

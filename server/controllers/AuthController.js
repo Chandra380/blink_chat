@@ -38,6 +38,7 @@ export const loginUser = async (req, res) => {
 
   try {
     const user = await UserModel.findOne({ username: username });
+    console.log(user);
 
     if (user) {
       const validity = await bcrypt.compare(password, user.password);
@@ -45,6 +46,7 @@ export const loginUser = async (req, res) => {
       if (!validity) {
         res.status(400).json("wrong password");
       } else {
+        console.log(process.env.JWTKEY);
         const token = jwt.sign(
           { username: user.username, id: user._id },
           process.env.JWTKEY,

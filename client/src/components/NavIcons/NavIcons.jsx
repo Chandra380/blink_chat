@@ -1,22 +1,17 @@
 import React from "react";
-
-import Home from "../../img/home.png";
-import Noti from "../../img/noti.png";
-import Comment from "../../img/comment.png";
-import { UilSetting } from "@iconscout/react-unicons";
-import { Link } from "react-router-dom";
+import { logout } from "../../actions/AuthActions";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const NavIcons = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleLogOut = () => {
+      dispatch(logout(navigate));
+  };
   return (
     <div className="navIcons">
-      <Link to="../home">
-        <img src={Home} alt="" />
-      </Link>
-      <UilSetting />
-      <img src={Noti} alt="" />
-      <Link to="../chat">
-        <img src={Comment} alt="" />
-      </Link>
+        <button className="button logout-button" onClick={handleLogOut}>Log Out</button>
     </div>
   );
 };

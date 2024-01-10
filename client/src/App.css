@@ -40,6 +40,7 @@
   border-radius: 0.5rem;
   background: var(--buttonBg);
   transition: all 100ms ease-out;
+  padding: 20px;
 }
 
 .button:hover {
@@ -90,4 +91,9 @@
   width: 6rem;
   height: 2rem;
   align-self: flex-end;
+}
+
+.navIcons{
+  display: flex;
+  height: 40px;
 }
